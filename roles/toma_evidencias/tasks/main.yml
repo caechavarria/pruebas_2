@@ -1,7 +1,7 @@
 ---
 # tasks file for Deploy VMs
-- include_tasks: port_groups.yml
-- include_tasks: deploy_vm_vmware.yml
+- include_tasks: Evidencia_VM.yml
+- include_tasks: Toma_snapshot.yml
   tags:
     - vmware
 ...
