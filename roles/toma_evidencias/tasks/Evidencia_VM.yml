@@ -1,13 +1,32 @@
 ---
-- name: Add Portgroup with Promiscuous
-  vmware_portgroup:
-        hostname: '10.215.99.55'
-        username: 'administrator@vsphere.local'
-        password: 'Lab2021*'
-        esxi_hostname: '10.215.99.60'
-        switch_name: '{{ vSwitch0 }}'
-        portgroup: '{{ portgroup }}'
-        vlan_id: '{{ vlan }}'
-        validate_certs: False
-- name: waiting
-  shell: sleep 15
+- name: snpa
+    vmware_guest_snapshot: 
+      hostname: 10.215.99.55
+      username: administrator@vsphere.local
+      password: Lab2021*
+      validate_certs: False
+      datacenter: CURANSIBLEDCLAB01
+      folder: /VMs-Windows/
+      name: "{{ item }}"
+      state: present
+      snapshot_name: "{{ SNAP }}"
+      description: snap1_description
+    delegate_to: localhost
+    
+  - name: waiting
+    shell: sleep 30
+  - name: Remove snpa
+  
+    vmware_guest_snapshot: 
+      hostname: 10.215.99.55
+      username: administrator@vsphere.local
+      password: Lab2021*
+      validate_certs: False
+      datacenter: CURANSIBLEDCLAB01
+      folder: /VMs-Windows/
+      name: "{{ item }}"
+      state: absent
+      snapshot_name: "{{ SNAP }}"
+      description: snap1_description
+    delegate_to: localhost
+...
