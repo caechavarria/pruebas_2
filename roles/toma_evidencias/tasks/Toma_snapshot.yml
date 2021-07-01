@@ -7,9 +7,9 @@
       validate_certs: False
       datacenter: CURANSIBLEDCLAB01
       folder: /VMs-Windows/
-      name: "{{ item }}"
+      name: linux01
       state: present
-      snapshot_name: "{{ SNAP }}"
+      snapshot_name: SNAP
       description: snap1_description
   delegate_to: localhost
 ...
