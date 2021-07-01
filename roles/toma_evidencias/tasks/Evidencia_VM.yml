@@ -1,32 +1,15 @@
 ---
-- name: snpa
-    vmware_guest_snapshot: 
-      hostname: 10.215.99.55
-      username: administrator@vsphere.local
-      password: Lab2021*
-      validate_certs: False
-      datacenter: CURANSIBLEDCLAB01
-      folder: /VMs-Windows/
-      name: "{{ item }}"
-      state: present
-      snapshot_name: "{{ SNAP }}"
-      description: snap1_description
-    delegate_to: localhost
-    
+  tasks:
+####copia el archivo del servidor al file####
+  - name: Copiar_Archivo_VM
+    shell: sshpass -p Colombia123 scp root@10.215.99.123:/tmp/VM.txt /etc/ansible
+    register: result
+  - debug: var=result.stdout_lines
   - name: waiting
-    shell: sleep 30
-  - name: Remove snpa
+    shell: sleep 10
   
-    vmware_guest_snapshot: 
-      hostname: 10.215.99.55
-      username: administrator@vsphere.local
-      password: Lab2021*
-      validate_certs: False
-      datacenter: CURANSIBLEDCLAB01
-      folder: /VMs-Windows/
-      name: "{{ item }}"
-      state: absent
-      snapshot_name: "{{ SNAP }}"
-      description: snap1_description
-    delegate_to: localhost
-...
+  - name: Ejecutar Evidencias de Vmware
+    shell: /usr/bin/pwsh /etc/ansible/Evidencias.ps1
+    register: result
+  - debug: var=result.stdout_lines
+...  
