@@ -1,5 +1,5 @@
 ---
-#- include_tasks: Evidencia_VM_ANS.yml
+- include_tasks: Evidencia_VM_ANS.yml
 - include_tasks: Toma_snapshot.yml
   tags:
     - vmware
