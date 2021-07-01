@@ -1,7 +1,7 @@
 ---
   tasks:
   - name: Ejecutar Evidencias de Vmware
-    shell: /usr/bin/pwsh /etc/ansible/Evidencias.ps1
-    register: result
+        shell: /usr/bin/pwsh /etc/ansible/Evidencias.ps1
+        register: result
   - debug: var=result.stdout_lines
 ...  
