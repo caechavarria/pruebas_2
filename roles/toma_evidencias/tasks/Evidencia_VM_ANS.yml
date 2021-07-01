@@ -1,5 +1,5 @@
 ---
   - name: Ejecutar Evidencias de Vmware
-    command: /usr/bin/pwsh Evidencias.ps1
+    shell: /usr/bin/pwsh Evidencias.ps1
     args:
     chdir: "commandpipeline"
