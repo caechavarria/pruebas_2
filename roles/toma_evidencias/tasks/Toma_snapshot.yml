@@ -1,6 +1,5 @@
 ---
-tasks:
-  - name: snpa
+- name: snpa
     vmware_guest_snapshot: 
       hostname: 10.215.99.55
       username: administrator@vsphere.local
@@ -10,10 +9,14 @@ tasks:
       folder: /VMs-Windows/
       name: "{{ item }}"
       state: present
-      snapshot_name: snap1
+      snapshot_name: "{{ SNAP }}"
       description: snap1_description
     delegate_to: localhost
+    
+  - name: waiting
+    shell: sleep 30
   - name: Remove snpa
+  
     vmware_guest_snapshot: 
       hostname: 10.215.99.55
       username: administrator@vsphere.local
@@ -23,7 +26,7 @@ tasks:
       folder: /VMs-Windows/
       name: "{{ item }}"
       state: absent
-      snapshot_name: snap1
+      snapshot_name: "{{ SNAP }}"
       description: snap1_description
     delegate_to: localhost
 ...
