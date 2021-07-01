@@ -1,7 +1,6 @@
 ---
-  tasks:
-    - name: Ejecutar Evidencias de Vmware
-      shell: /usr/bin/pwsh /etc/ansible/Evidencias.ps
-      register: out
-    - debug: var=out.stdout_lines  
-...  
+  - name: Ejecutar Evidencias de Vmware
+    shell: /usr/bin/pwsh /etc/ansible/Evidencias.ps
+    register: out
+  - debug: var=out.stdout_lines  
+  ...  
