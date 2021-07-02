@@ -1,5 +1,5 @@
 ---
-- name: Ejecutar Evidencias de Vmware
-  shell: Evidencias.ps1
-  args:
-    executable: /usr/bin/pwsh
+  - name: Ejecutar Evidencias de Vmware
+    shell: /usr/bin/pwsh /etc/ansible/Evidencias.ps1
+    register: result
+  - debug: var=result.stdout_lines
